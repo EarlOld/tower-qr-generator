@@ -4,6 +4,8 @@ import InputText from 'primevue/inputtext'
 import QRGenerator from './components/QRGenerator.vue'
 import QRCustomizer from './components/QRCustomizer.vue'
 import type { QROptions } from './components/QRGenerator.vue'
+import logoUrl from '@/assets/logo.png'
+
 
 const url = ref('')
 const qrOptions = ref<QROptions>({
@@ -21,7 +23,7 @@ const qrOptions = ref<QROptions>({
     <!-- Header -->
     <header class="app-header">
       <div class="header-content">
-        <img src="https://bashta.in.ua/_astro/favicon.CjKhTaRF.png" alt="Logo" class="logo" />
+        <img :src="logoUrl" alt="Logo" class="logo" />
         <div>
           <h1 class="title">Bashta QR Code Generator</h1>
         </div>

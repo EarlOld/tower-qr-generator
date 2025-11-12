@@ -2,6 +2,7 @@
 import { ref, computed } from 'vue'
 import Button from 'primevue/button'
 import QrcodeVue from 'qrcode.vue'
+import logoUrl from '@/assets/logo.png'
 
 export interface QROptions {
   size: number
@@ -15,18 +16,15 @@ export interface QROptions {
 const props = defineProps<{
   url: string
   options: QROptions
-  logoUrl?: string
 }>()
 
 const qrRef = ref<InstanceType<typeof QrcodeVue> | null>(null)
 
 const imageSettings = computed(() => {
-  if (!props.logoUrl) return undefined
-
   return {
-    src: props.logoUrl,
-    width: props.options.size * 0.2,
-    height: props.options.size * 0.2,
+    src: logoUrl,
+    width: 48,
+    height: 48,
     excavate: true
   }
 })
