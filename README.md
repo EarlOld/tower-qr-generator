@@ -1,73 +1,136 @@
-# tower-qr-generator
+# Bashta QR Code Generator
 
-This template should help get you started developing with Vue 3 in Vite.
+[![CI](https://github.com/EarlOld/tower-qr-generator/actions/workflows/ci.yml/badge.svg)](https://github.com/EarlOld/tower-qr-generator/actions/workflows/ci.yml)
+[![Deploy](https://github.com/EarlOld/tower-qr-generator/actions/workflows/deploy.yml/badge.svg)](https://github.com/EarlOld/tower-qr-generator/actions/workflows/deploy.yml)
 
-## Recommended IDE Setup
+Сучасний веб-застосунок для генерації QR-кодів з логотипом та кастомним дизайном.
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## ✨ Особливості
 
-## Recommended Browser Setup
+- 🎨 **Кастомізація кольорів** - налаштування кольору коду та фону
+- 📥 **Експорт в PNG/SVG** - збереження QR-кодів у різних форматах
+- 🖼️ **Логотип по центру** - автоматичне додавання логотипу Bashta
+- 📱 **Адаптивний дизайн** - працює на всіх пристроях
+- ⚡ **Швидка генерація** - миттєве створення QR-кодів
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+## 🛠️ Технології
 
-## Type Support for `.vue` Imports in TS
+- **Vue 3.5** - Composition API з TypeScript
+- **PrimeVue 4.4** - UI компоненти з Aura темою
+- **qrcode.vue** - бібліотека для генерації QR-кодів
+- **Vite 7** - швидкий build tool
+- **Vitest** - unit тестування
+- **Playwright** - E2E тестування
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+## 📦 Встановлення
 
-## Customize configuration
+```bash
+# Клонувати репозиторій
+git clone https://github.com/EarlOld/tower-qr-generator.git
+cd tower-qr-generator
 
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
+# Встановити залежності
 npm install
-```
 
-### Compile and Hot-Reload for Development
-
-```sh
+# Запустити dev сервер
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+## 🚀 CI/CD
 
-```sh
-npm run build
+Проект налаштований з GitHub Actions для автоматичного тестування та деплою:
+
+- ✅ **CI Pipeline** - lint, type-check, unit тести, E2E тести
+- 🚀 **Auto Deploy** - автоматичний деплой на Vercel при push до main
+- 🔍 **Preview Deployments** - preview URL для кожного PR
+
+Детальніше про налаштування: [DEPLOYMENT.md](.github/DEPLOYMENT.md)
+
+## 🚀 Команди
+
+```bash
+# Розробка
+npm run dev              # Запуск dev сервера (http://localhost:5173)
+
+# Білд
+npm run build            # Білд продакшн версії
+npm run preview          # Перегляд білду
+
+# Тестування
+npm run test:unit        # Запуск unit тестів
+npm run test:e2e         # Запуск E2E тестів
+
+# Якість коду
+npm run type-check       # Перевірка TypeScript типів
+npm run lint             # Перевірка та виправлення ESLint помилок
+npm run format           # Форматування коду з Prettier
+
+# Pre-push валідація
+./scripts/pre-push.sh    # Запуск всіх перевірок перед push
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+## 🧪 Тестування
 
-```sh
-npm run test:unit
-```
+Проект покритий unit та E2E тестами:
 
-### Run End-to-End Tests with [Playwright](https://playwright.dev)
+- **18 unit тестів** для компонентів QRGenerator та QRCustomizer
+- **39 E2E тестів** (13 сценаріїв × 3 браузери: Chromium, Firefox, WebKit)
 
-```sh
-# Install browsers for the first run
-npx playwright install
-
-# When testing on CI, must build the project first
-npm run build
-
-# Runs the end-to-end tests
+```bash
+# Запустити всі тести
+npm run test:unit -- --run
 npm run test:e2e
-# Runs the tests only on Chromium
-npm run test:e2e -- --project=chromium
-# Runs the tests of a specific file
-npm run test:e2e -- tests/example.spec.ts
-# Runs the tests in debug mode
-npm run test:e2e -- --debug
+
+# Переглянути Playwright звіт
+npx playwright show-report
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+## 📂 Структура проекту
 
-```sh
-npm run lint
 ```
+src/
+├── components/
+│   ├── QRGenerator.vue      # Компонент генерації та експорту QR
+│   ├── QRCustomizer.vue     # Компонент налаштувань
+│   └── __tests__/           # Unit тести
+├── assets/                  # Стилі
+├── App.vue                  # Головний компонент
+└── main.ts                  # Точка входу
+
+e2e/
+└── vue.spec.ts              # E2E тести
+```
+
+## 🎯 Використання
+
+1. Введіть URL у поле вводу
+2. Налаштуйте колір коду та фону (за бажанням)
+3. Оберіть формат експорту: PNG або SVG
+4. Натисніть кнопку "Завантажити PNG/SVG"
+
+QR-код автоматично включає логотип Bashta по центру.
+
+## ⚙️ Конфігурація
+
+### QR-код параметри
+
+За замовчуванням встановлені оптимальні параметри:
+- Розмір: 300×300 пікселів
+- Рівень корекції помилок: H (високий)
+- Відступ: 1
+- Логотип: 48×48 пікселів
+
+### Кольори за замовчуванням
+
+- Колір коду: `#112337`
+- Колір фону: `#ffffff`
+
+## 📝 Ліцензія
+
+MIT License - створено для [bashta.in.ua](https://bashta.in.ua) з ♥
+
+## 👤 Автор
+
+**EarlOld**
+
+- GitHub: [@EarlOld](https://github.com/EarlOld)
